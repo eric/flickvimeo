@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'flickvimeo'
+
+unless ARGV[0]
+  puts "Usage: #{File.basename($0)} <vimeo-id-or-url>"
+  exit(1)
+end
+
+v = FlickVimeo::Video.new(ARGV[0])
+
+puts "Video file for #{ARGV[0]}: #{v.video_file_url}"
+
+require 'osx/cocoa'
+
+request = {
+  'RequestType' => 'play-media',
+  'MediaLocation' => v.video_file_url
+}
+
+OSX::NSDistributedNotificationCenter.defaultCenter.postNotificationName_object_userInfo_deliverImmediately("com.sadun.airflick",nil,request,true)
+
+# system File.expand_path('../submitairplay', __FILE__).to_s, v.video_file_url.to_s

@@ -1,0 +1,16 @@
+#!/usr/bin/env macruby
+
+unless ARGV[0]
+  puts "Usage: #{File.basename($0)} <media-url>"
+  exit(1)
+end
+
+puts "Requesting: #{ARGV[0]}"
+
+request = {
+  'RequestType' => 'play-media',
+  'MediaLocation' => ARGV[0]
+}
+
+NSDistributedNotificationCenter.defaultCenter.postNotificationName("com.sadun.airflick", object:nil, userInfo:request, deliverImmediately:true)
+		

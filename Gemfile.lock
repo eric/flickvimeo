@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    flickvimeo (0.0)
+      yajl-ruby
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    rake (0.8.7)
+    yajl-ruby (0.7.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  flickvimeo!
+  rake
+  yajl-ruby
