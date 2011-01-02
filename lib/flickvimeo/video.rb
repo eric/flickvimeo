@@ -10,8 +10,6 @@ module FlickVimeo
       @codec = 'h264'
     end
     
-    # http://player.vimeo.com/play_redirect?quality=mobile&codecs=h264&clip_id=18017106&time=1293871421&sig=f319e34ea74b2bf901bd8fd9d3e258cb&type=html5_desktop_embed
-    
     def video_redirect_url
       "http://player.vimeo.com/play_redirect?quality=#{best_quality}&codecs=#{@codec}&clip_id=#{clip_id}&time=#{timestamp}&sig=#{signature}&type=html5_desktop_local"
     end
@@ -44,24 +42,12 @@ module FlickVimeo
         response = http_request(@url)
         
         if m = response.body.match(/clip\d+_\d+ = (.*)?;Player.checkRatio/)
+          # Cleanup javascript to be valid JSON
           json = m[1].gsub(/([\{\[,]\s*)([a-zA-Z_]+):/) { %{#{$1}"#{$2}":} }
           json = json.gsub(/(:\s*)'(.*?)'/, '\1"\2"')
           
           Yajl::Parser.parse(json)
         end
-      end
-    end
-    
-    def convert_from_js(value)
-      case value
-      when V8::Array
-        value.collect { |v| convert_from_js(v) }
-      when V8::Object
-        h = {}
-        value.each { |k,v| h[k] = convert_from_js(v) }
-        h
-      else
-        value
       end
     end
     
