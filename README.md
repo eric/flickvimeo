@@ -35,5 +35,28 @@ For example:
  * This may go against all sorts of [Vimeo][] rules and may break any time they
    decide to change the format of the Javascript they use on their site
 
+
+# Contributing
+
+Once you've made your great commits:
+
+ 1. [Fork][fk] Mustache
+ 2. Create a topic branch - `git checkout -b my_branch`
+ 3. Push to your branch - `git push origin my_branch`
+ 4. Create a Pull Request or an [Issue][is] with a link to your branch
+ 5. That's it!
+
+You might want to checkout Resque's [Contributing][cb] wiki page for information
+on coding standards, new features, etc.
+
+
+# License
+
+Copyright (c) 2010-2011 Eric Lindvall. See LICENSE for details.
+
+
 [Vimeo]: http://vimeo.com/
 [AirFlick]: http://ericasadun.com/ftp/AirPlay/
+[cb]: http://wiki.github.com/defunkt/resque/contributing
+[fk]: http://help.github.com/forking/
+[is]: http://github.com/eric/flickvimeo/issues
