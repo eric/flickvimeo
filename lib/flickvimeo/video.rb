@@ -42,15 +42,17 @@ module FlickVimeo
         response = http_request(@url)
         
         if m = response.body.match(/clip\d+_\d+ = (.*)?;Player.checkRatio/)
-          # Cleanup javascript to be valid JSON
-          json = m[1].gsub(/([\{\[,]\s*)([a-zA-Z_]+):/) { %{#{$1}"#{$2}":} }
-          json = json.gsub(/(:\s*)'(.*?)'/, '\1"\2"')
-          
-          Yajl::Parser.parse(json)
+          Yajl::Parser.parse(convert_javascript_to_valid_json(m[1]))
         end
       end
     end
     
+    def convert_javascript_to_valid_json(input)
+      # Cleanup javascript to be valid JSON
+      json = input.gsub(/([\{\[,]\s*)([a-zA-Z_]+):/) { %{#{$1}"#{$2}":} }
+      json = json.gsub(/(:\s*)'((?:[^'\\]|\\.)*)'/, '\1"\2"')
+    end
+
     def vimeo_url(id)
       case id.to_s
       when %r{^http://.*vimeo.com.*[#/](\d+)}

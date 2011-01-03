@@ -15,8 +15,6 @@ class TestBasic < Test::Unit::TestCase
   end
   
   def test_video_file_url
-    pp @video.config
-    puts @video.video_file_url
     assert_not_nil @video.video_file_url
   end
 end
