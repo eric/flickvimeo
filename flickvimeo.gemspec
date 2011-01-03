@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'flickvimeo'
-  s.version           = '0.0'
-  s.date              = '2011-01-01'
+  s.version           = '1.0.0'
+  s.date              = '2011-01-02'
   # s.rubyforge_project = 'flickvimeo'
 
   ## Make sure your summary is short. The description may be as long
@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
   ## Specify any RDoc options here. You'll want to add your README and
   ## LICENSE files to the extra_rdoc_files list.
   s.rdoc_options = ["--charset=UTF-8"]
-  s.extra_rdoc_files = %w[README LICENSE]
+  s.extra_rdoc_files = %w[README.md LICENSE]
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
@@ -54,7 +54,21 @@ Gem::Specification.new do |s|
   ## contents of your Git repository via the gemspec task. DO NOT REMOVE
   ## THE MANIFEST COMMENTS, they are used as delimiters by the task.
   # = MANIFEST =
-  s.files = %w[]
+  s.files = %w[
+    Gemfile
+    Gemfile.lock
+    LICENSE
+    README.md
+    Rakefile
+    bin/flickvimeo
+    bin/submitairplay
+    flickvimeo.gemspec
+    lib/flickvimeo.rb
+    lib/flickvimeo/video.rb
+    test/helper.rb
+    test/test_basic.rb
+    test/test_video.rb
+  ]
   # = MANIFEST =
 
   ## Test files will be grabbed from the file list. Make sure the path glob
