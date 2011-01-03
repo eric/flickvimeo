@@ -18,6 +18,5 @@ request = {
   'MediaLocation' => v.video_file_url
 }
 
-OSX::NSDistributedNotificationCenter.defaultCenter.postNotificationName_object_userInfo_deliverImmediately("com.sadun.airflick",nil,request,true)
-
-# system File.expand_path('../submitairplay', __FILE__).to_s, v.video_file_url.to_s
+notification_center = OSX::NSDistributedNotificationCenter.defaultCenter
+notification_center.postNotificationName_object_userInfo_deliverImmediately("com.sadun.airflick", nil, request, true)

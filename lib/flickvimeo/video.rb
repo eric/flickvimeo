@@ -53,7 +53,7 @@ module FlickVimeo
     
     def vimeo_url(id)
       case id.to_s
-      when %r{^http://.*vimeo.com/.*[#/](\d+)}
+      when %r{^http://.*vimeo.com.*[#/](\d+)}
         "http://player.vimeo.com/video/#{$1}"
       when /^\d+$/
         "http://player.vimeo.com/video/#{id}"
