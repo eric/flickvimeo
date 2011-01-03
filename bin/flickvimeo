@@ -11,6 +11,8 @@ v = FlickVimeo::Video.new(ARGV[0])
 
 puts "Video file for #{ARGV[0]}: #{v.video_file_url}"
 
+puts "Sending to AirFlick now..."
+
 require 'osx/cocoa'
 
 request = {
