@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'flickvimeo'
-  s.version           = '1.0.2'
-  s.date              = '2011-01-02'
+  s.version           = '1.0.3'
+  s.date              = '2011-01-03'
   # s.rubyforge_project = 'flickvimeo'
 
   ## Make sure your summary is short. The description may be as long
