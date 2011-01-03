@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
-  s.add_dependency('yajl-ruby', '~> 0.7.8')
+  s.add_dependency('nokogiri', '~> 1.4.3')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development

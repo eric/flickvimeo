@@ -1,17 +1,19 @@
 require "net/http"
 require "uri"
-require 'yajl'
+require 'nokogiri'
 
 module FlickVimeo
   class Video
+    attr_accessor :clip_id, :url
+
     def initialize(id)
-      @id  = id
-      @url = vimeo_url(id)
+      @clip_id = vimeo_id(id)
+      @url     = "http://vimeo.com/moogaloop/load/clip:#{@clip_id}/local/"
       @codec = 'h264'
     end
     
     def video_redirect_url
-      "http://player.vimeo.com/play_redirect?quality=#{best_quality}&codecs=#{@codec}&clip_id=#{clip_id}&time=#{timestamp}&sig=#{signature}&type=html5_desktop_local"
+      "http://player.vimeo.com/play_redirect?quality=#{quality}&codecs=#{@codec}&clip_id=#{clip_id}&time=#{timestamp}&sig=#{signature}&type=html5_desktop_local"
     end
     
     def video_file_url
@@ -22,48 +24,35 @@ module FlickVimeo
     end
     
     def timestamp
-      config['config']['request']['timestamp']
+      config.search('timestamp').text
     end
     
     def signature
-      config['config']['request']['signature']
+      config.search('request_signature').text
     end
     
-    def clip_id
-      config['config']['video']['id']
-    end
-    
-    def best_quality
-      config['config']['video']['files'][@codec].first
+    def quality
+      config.search('video isHD').text == '1' ? 'hd' : 'sd'
     end
     
     def config
       @config ||= begin
         response = http_request(@url)
-        
-        if m = response.body.match(/clip\d+_\d+ = (.*)?;Player.checkRatio/)
-          Yajl::Parser.parse(convert_javascript_to_valid_json(m[1]))
-        end
+        Nokogiri::XML.parse(response.body)
       end
     end
     
-    def convert_javascript_to_valid_json(input)
-      # Cleanup javascript to be valid JSON
-      json = input.gsub(/([\{\[,]\s*)([a-zA-Z_]+):/) { %{#{$1}"#{$2}":} }
-      json = json.gsub(/(:\s*)'((?:[^'\\]|\\.)*)'/, '\1"\2"')
-    end
-
-    def vimeo_url(id)
+    def vimeo_id(id)
       case id.to_s
       when %r{^http://.*vimeo.com.*[#/](\d+)}
-        "http://player.vimeo.com/video/#{$1}"
+        $1
       when /^\d+$/
-        "http://player.vimeo.com/video/#{id}"
+        id
       else
         raise "Unknown id format: #{id}"
       end
     end
-    
+
     def http_request(url)
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)

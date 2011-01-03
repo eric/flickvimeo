@@ -7,7 +7,7 @@ class TestBasic < Test::Unit::TestCase
   end
   
   def test_format
-    assert_equal 'hd', @video.best_quality
+    assert_equal 'hd', @video.quality
   end
   
   def test_clip_id
