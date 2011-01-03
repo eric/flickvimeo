@@ -40,7 +40,7 @@ For example:
 
 Once you've made your great commits:
 
- 1. [Fork][fk] Mustache
+ 1. [Fork][fk] FlickVimeo
  2. Create a topic branch - `git checkout -b my_branch`
  3. Push to your branch - `git push origin my_branch`
  4. Create a Pull Request or an [Issue][is] with a link to your branch
