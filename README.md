@@ -52,11 +52,12 @@ on coding standards, new features, etc.
 
 # License
 
-Copyright (c) 2010-2011 Eric Lindvall. See LICENSE for details.
+Copyright (c) 2010-2011 Eric Lindvall. See [LICENSE][] for details.
 
 
 [Vimeo]: http://vimeo.com/
 [AirFlick]: http://ericasadun.com/ftp/AirPlay/
-[cb]: http://wiki.github.com/defunkt/resque/contributing
+[cb]: https://wiki.github.com/defunkt/resque/contributing
 [fk]: http://help.github.com/forking/
-[is]: http://github.com/eric/flickvimeo/issues
+[is]: https://github.com/eric/flickvimeo/issues
+[LICENSE]: https://github.com/eric/flickvimeo/blob/master/LICENSE
