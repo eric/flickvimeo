@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'flickvimeo'
   s.version           = '0.0'
-  s.date              = '2010-01-01'
-  s.rubyforge_project = 'NAME'
+  s.date              = '2011-01-01'
+  # s.rubyforge_project = 'flickvimeo'
 
   ## Make sure your summary is short. The description may be as long
   ## as you like.
-  s.summary     = "Short description used in Gem listings."
-  s.description = "Long description. Maybe copied from the README."
+  s.summary     = "A simple tool to use AirFlick to send Vimeo videos to your AppleTV"
+  s.description = "A simple tool to use AirFlick to send Vimeo videos to your AppleTV"
 
   ## List the primary authors. If there are a bunch of authors, it's probably
   ## better to set the email to an email list or something. If you don't have
@@ -44,8 +44,7 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
-  # s.add_dependency('therubyracer')
-  s.add_dependency('yajl-ruby')
+  s.add_dependency('yajl-ruby', '~> 0.7.8')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
